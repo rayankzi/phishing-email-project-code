@@ -3,6 +3,7 @@ from functions.claude import create_claude_batch_req
 
 def main():
     create_openai_req_file()
+    create_claude_req_file()
     print("Hello")
 
 
