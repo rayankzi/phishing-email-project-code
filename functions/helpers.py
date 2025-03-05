@@ -1,36 +1,29 @@
 import json
+import random
 import os
 from functions.constants import SYSTEM_PROMPT, USER_PROMPT
 
 
-def create_claude_req_file():
-    req_data = []
+def create_gemini_req_file():
+    file_path = os.path.join("files", "gemini-req.jsonl")
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-    for i in range(1, 1001):
-        req_data.append({
-            "custom_id": f"claude-request-{i}",
-            "params": {
-                "model": "claude-3-5-sonnet-20241022",
-                "max_tokens": 1000,
-                "system": [
-                    {
-                        "type": "text",
-                        "text": SYSTEM_PROMPT,
-                        "cache_control": {"type": "ephemeral"}
+    with open(file_path, "w", encoding="utf-8") as f:
+        for i in range(1, 1001):
+            data = {
+                "request": {
+                    "contents": [{"role": "user", "parts": [{"text": USER_PROMPT}]}],
+                    "system_instruction": {
+                        "parts": [{
+                            "text": f"{SYSTEM_PROMPT}\nYou are request number {i}. "
+                                    f"Make sure you specify that at the beginning of your response."
+                        }]
                     }
-                ],
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": USER_PROMPT
-                    }
-                ]
+                }
             }
-        })
+            f.write(json.dumps(data, separators=(",", ":")) + "\n")
 
-    write_to_file("claude-req.json", req_data)
-
-    return req_data
+    print(f"File '{file_path}' has been created with 1000 lines.")
 
 
 def create_openai_req_file():
@@ -53,22 +46,33 @@ def create_openai_req_file():
     }
 
     os.makedirs("files", exist_ok=True)
-    file_path = os.path.join("files", "openai-req.jsonl")
+
+    for i in range(1, 10):
+        file_path = os.path.join("files", f"openai-req-${i}.jsonl")
+
+        with open(file_path, "w") as f:
+            for i in range(1, 100):
+                request = base_req.copy()
+                request["custom_id"] = f"openai-request-{i}"
+                f.write(json.dumps(request) + "\n")
+
+
+def generate_random_numbers(count=50, start=1, end=1000):
+    claude_numbers = [random.randint(start, end) for _ in range(count)]
+    gemini_numbers = [random.randint(start, end) for _ in range(count)]
+    openai_numbers = [random.randint(start, end) for _ in range(count)]
+
+    data = {
+        "openai": f"These are the numbers for OpenAI: {openai_numbers}",
+        "claude": f"These are the numbers for OpenAI: {claude_numbers}",
+        "gemini": f"These are the numbers for OpenAI: {gemini_numbers}"
+    }
+
+    os.makedirs("files", exist_ok=True)
+    file_path = os.path.join("files", f"selected-numbers.json")
 
     with open(file_path, "w") as f:
-        for i in range(1, 1001):
-            request = base_req.copy()
-            request["custom_id"] = f"openai-request-{i}"
-            f.write(json.dumps(request) + "\n")
+        json.dump(data, f)
 
+    print("Random numbers saved")
 
-def write_to_file(file_name, data):
-    output_dir = "files"
-    os.makedirs(output_dir, exist_ok=True)  # Create directory if it doesn't exist
-
-    file_path = os.path.join(output_dir, file_name)
-
-    with open(file_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-
-    print(f"Data written to {file_name}")

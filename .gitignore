@@ -1,2 +1,4 @@
 .idea
 .venv
+.env
+gemini-service-acc.json

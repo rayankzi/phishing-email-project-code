@@ -1,13 +1,16 @@
+import os
+
 import anthropic
 from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
 from anthropic.types.messages.batch_create_params import Request
 from functions.constants import SYSTEM_PROMPT, USER_PROMPT
-from functions.helpers import write_to_file
-
-client = anthropic.Anthropic()
 
 
-def create_claude_batch_req():
+def create_claude_batch_req(api_key: str):
+    client = anthropic.Anthropic(
+        api_key=api_key
+    )
+
     request_list = []
 
     for i in range(1, 1001):
@@ -15,7 +18,7 @@ def create_claude_batch_req():
             Request(
                 custom_id=f"claude-req-{i}",
                 params=MessageCreateParamsNonStreaming(
-                    model="claude-3-5-sonnet-20241022",
+                    model="claude-3-7-sonnet-20250219",
                     max_tokens=1000,
                     system=[
                         {
@@ -32,16 +35,23 @@ def create_claude_batch_req():
             )
         )
 
-    message_batch = client.messages.batches.create(requests=request_list)
-    write_to_file("claude-req-info.json", message_batch)
+    client.messages.batches.create(requests=request_list)
 
 
-def check_claude_batch_status(batch_id: str):
+def check_claude_batch_status(batch_id: str, api_key: str):
+    client = anthropic.Anthropic(
+        api_key=api_key
+    )
+
     message_batch = client.messages.batches.retrieve(batch_id)
     print(f"Batch {message_batch.id} processing status is {message_batch.processing_status}")
 
 
-def get_claude_batch_results(batch_id: str):
+def get_claude_batch_results(batch_id: str, api_key: str):
+    client = anthropic.Anthropic(
+        api_key=api_key
+    )
+
     for result in client.messages.batches.results(batch_id):
         match result.result.type:
             case "succeeded":

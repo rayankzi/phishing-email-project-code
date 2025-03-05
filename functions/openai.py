@@ -1,5 +1,4 @@
 from openai import OpenAI
-from helpers import write_to_file
 
 client = OpenAI()
 
@@ -25,7 +24,6 @@ def create_openai_batch_req(input_file_path: str):
     )
 
     print(f"New batch, ${new_batch}")
-    write_to_file("openai-batch-req-data.json", new_batch)
 
 
 def check_openai_batch_status(batch_id: str):
