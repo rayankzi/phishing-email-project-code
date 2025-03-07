@@ -1,7 +1,12 @@
 import json
 import random
 import os
-from functions.constants import SYSTEM_PROMPT, USER_PROMPT
+from functions.constants import (
+    SYSTEM_PROMPT,
+    USER_PROMPT,
+    CLAUDE_REQUEST_NUMBERS,
+    GEMINI_REQUEST_NUMBERS
+)
 
 
 def create_gemini_req_file():
@@ -57,22 +62,107 @@ def create_openai_req_file():
                 f.write(json.dumps(request) + "\n")
 
 
-def generate_random_numbers(count=50, start=1, end=1000):
-    claude_numbers = [random.randint(start, end) for _ in range(count)]
-    gemini_numbers = [random.randint(start, end) for _ in range(count)]
-    openai_numbers = [random.randint(start, end) for _ in range(count)]
+def generate_distinct_random_sets(count=50, start=1, end=1000):
+    all_possible_numbers = set(range(start, end + 1))
+
+    claude_numbers = random.sample(list(all_possible_numbers), count)
+    remaining_numbers = all_possible_numbers - set(claude_numbers)
+
+    gemini_numbers = random.sample(list(remaining_numbers), count)
+    remaining_numbers -= set(gemini_numbers)
+
+    openai_numbers = random.sample(list(remaining_numbers), count)
 
     data = {
         "openai": f"These are the numbers for OpenAI: {openai_numbers}",
-        "claude": f"These are the numbers for OpenAI: {claude_numbers}",
-        "gemini": f"These are the numbers for OpenAI: {gemini_numbers}"
+        "claude": f"These are the numbers for Claude: {claude_numbers}",
+        "gemini": f"These are the numbers for Gemini: {gemini_numbers}"
     }
 
     os.makedirs("files", exist_ok=True)
-    file_path = os.path.join("files", f"selected-numbers.json")
+    file_path = os.path.join("files", "selected-numbers.json")
 
     with open(file_path, "w") as f:
         json.dump(data, f)
 
     print("Random numbers saved")
 
+    return data
+
+
+def get_filtered_claude_request():
+    matched_lines = []
+    id_set = {f"claude-req-{num}" for num in CLAUDE_REQUEST_NUMBERS}
+
+    os.makedirs("files", exist_ok=True)
+    data_file = os.path.join("files", "all-claude-responses.jsonl")
+    output_file = os.path.join("files", "filtered-claude-responses-for-analysis.jsonl")
+
+    with open(data_file, 'r', encoding='utf-8') as file:
+        with open(output_file, 'w', encoding='utf-8') as out_file:
+            for line in file:
+                try:
+                    data = json.loads(line)
+                    if 'custom_id' in data and data['custom_id'] in id_set:
+                        json.dump(data, out_file)
+                        out_file.write('\n')
+                        matched_lines.append(data)
+                except json.JSONDecodeError:
+                    print("Skipping invalid JSON line:", line.strip())
+
+    print("Got filtered Claude requests")
+
+
+def get_filtered_gemini_request():
+    request_numbers = list(dict.fromkeys(GEMINI_REQUEST_NUMBERS))
+    os.makedirs("files", exist_ok=True)
+
+    data_file = os.path.join("files", "all-gemini-responses.jsonl")
+    output_file = os.path.join("files", "filtered-gemini-responses-for-analysis.jsonl")
+
+    matched_lines = []
+    skipped_numbers = []
+
+    try:
+        with open(data_file, 'r', encoding='utf-8') as file, \
+                open(output_file, 'w', encoding='utf-8') as out_file:
+
+            all_lines = file.readlines()
+
+            for num in request_numbers:
+                found_match = False
+                for line in all_lines:
+                    try:
+                        data = json.loads(line)
+                        system_instruction = data["request"]["system_instruction"]["parts"][0]["text"]
+                        match_string = (f"\nYou are request number {num}. "
+                                        f"Make sure you specify that at the beginning of your response")
+                        if match_string in system_instruction:
+                            if data not in matched_lines:
+                                json.dump(data, out_file)
+                                out_file.write('\n')
+                                matched_lines.append(data)
+                                found_match = True
+                                break
+
+                    except json.JSONDecodeError:
+                        print(f"Skipping invalid JSON line: {line.strip()}")
+
+                # Track numbers that couldn't be found
+                if not found_match:
+                    skipped_numbers.append(num)
+
+        # Print out detailed information
+        print(f"Total requests filtered: {len(matched_lines)}")
+        print(f"Skipped request numbers: {skipped_numbers}")
+
+        # Raise an error if we didn't get exactly 50 matches
+        if len(matched_lines) != 50:
+            raise ValueError(f"Expected 50 matches, but found {len(matched_lines)}")
+
+    except FileNotFoundError:
+        print(f"Error: File {data_file} not found")
+    except PermissionError:
+        print(f"Error: Permission denied when accessing {data_file}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
