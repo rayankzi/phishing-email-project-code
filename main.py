@@ -1,16 +1,23 @@
 from dotenv import load_dotenv
-from functions.helpers import get_filtered_claude_request, get_filtered_gemini_request
-from functions.constants import GEMINI_REQUEST_NUMBERS, OPENAI_REQUEST_NUMBERS, CLAUDE_REQUEST_NUMBERS
+from functions.scoring import get_email_scores, write_score_results_to_file
+from functions.helpers import get_claude_emails_list, get_gemini_emails_list
 
 # Load environment variables from the .env file
 load_dotenv()
 
 
 def main():
-    get_filtered_claude_request()
-    get_filtered_gemini_request()
-    print("Hello")
+    # print()
+    claude_emails = get_claude_emails_list()
+    gemini_emails = get_gemini_emails_list()
+
+    claude_scores = get_email_scores(claude_emails)
+    gemini_scores = get_email_scores(gemini_emails)
+
+    write_score_results_to_file("claude", claude_scores)
+    write_score_results_to_file("gemini", gemini_scores)
 
 
 if __name__ == "__main__":
     main()
+# absl,  rouge_score, nltk

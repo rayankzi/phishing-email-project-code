@@ -1,9 +1,7 @@
-import os
-
 import anthropic
 from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
 from anthropic.types.messages.batch_create_params import Request
-from functions.constants import SYSTEM_PROMPT, USER_PROMPT
+from constants import SYSTEM_PROMPT, USER_PROMPT
 
 
 def create_claude_batch_req(api_key: str):

@@ -1,7 +1,8 @@
 import json
 import random
+import re
 import os
-from functions.constants import (
+from constants import (
     SYSTEM_PROMPT,
     USER_PROMPT,
     CLAUDE_REQUEST_NUMBERS,
@@ -124,8 +125,8 @@ def get_filtered_gemini_request():
     skipped_numbers = []
 
     try:
-        with open(data_file, 'r', encoding='utf-8') as file, \
-                open(output_file, 'w', encoding='utf-8') as out_file:
+        with open(data_file, "r", encoding="utf-8") as file, \
+                open(output_file, "w", encoding="utf-8") as out_file:
 
             all_lines = file.readlines()
 
@@ -160,9 +161,43 @@ def get_filtered_gemini_request():
         if len(matched_lines) != 50:
             raise ValueError(f"Expected 50 matches, but found {len(matched_lines)}")
 
-    except FileNotFoundError:
-        print(f"Error: File {data_file} not found")
-    except PermissionError:
-        print(f"Error: Permission denied when accessing {data_file}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+
+def get_claude_emails_list():
+    file_path = os.path.join("files", "filtered-claude-responses-for-analysis.jsonl")
+    final_list = []
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        all_lines = f.readlines()
+
+        for line in all_lines:
+            obj = json.loads(line)
+            final_list.append({
+                "request_id": obj["custom_id"],
+                "text": obj["result"]["message"]["content"][0]["text"]
+            })
+
+    return final_list
+
+
+def get_gemini_emails_list():
+    file_path = os.path.join("files", "filtered-gemini-responses-for-analysis.jsonl")
+    final_list = []
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        all_lines = f.readlines()
+
+        for line in all_lines:
+            obj = json.loads(line)
+            system_instruction = obj["request"]["system_instruction"]["parts"][0]["text"]
+            temp = re.findall(r'\d+', system_instruction.partition("You are request number")[2])
+            request_id = list(map(int, temp))[0]
+
+            final_list.append({
+                "request_id": request_id,
+                "text": obj["response"]["candidates"][0]["content"]["parts"][0]["text"]
+            })
+
+    return final_list
