@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="632163a1-8175-4349-b2e8-4f2b015db4c8" name="Changes" comment="updated more things">
-      <change afterPath="$PROJECT_DIR$/constants/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/scoring.py" afterDir="false" />
+    <list default="true" id="632163a1-8175-4349-b2e8-4f2b015db4c8" name="Changes" comment="got scores for claude and gemini">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/claude.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/claude.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/claude-score-file.json" beforeDir="false" afterPath="$PROJECT_DIR$/files/claude-score-file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/gemini-score-file.json" beforeDir="false" afterPath="$PROJECT_DIR$/files/gemini-score-file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/scoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/scoring.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741315421164</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="got scores for claude and gemini">
+      <option name="closed" value="true" />
+      <created>1741569757166</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741569757166</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -136,6 +140,7 @@
     <MESSAGE value="modified prompt" />
     <MESSAGE value="updated a lot of things" />
     <MESSAGE value="updated more things" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated more things" />
+    <MESSAGE value="got scores for claude and gemini" />
+    <option name="LAST_COMMIT_MESSAGE" value="got scores for claude and gemini" />
   </component>
 </project>

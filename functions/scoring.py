@@ -22,6 +22,7 @@ def get_email_scores(email_list):
 
     return score_list
 
+
 def write_score_results_to_file(model_type, score_list):
     os.makedirs("files", exist_ok=True)
     file_path = os.path.join("files", f"{model_type}-score-file.json")
