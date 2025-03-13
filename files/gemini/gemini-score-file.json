@@ -1,252 +1,252 @@
 [
   {
     "request_id": 618,
-    "bleu_score": 0.049806913010742956,
-    "rouge1_score": 0.5056433408577877
+    "bleu_score": 0.07190081706908322,
+    "rouge1_score": 0.5154185022026431
   },
   {
     "request_id": 587,
-    "bleu_score": 0.08131598132132037,
-    "rouge1_score": 0.5029702970297031
+    "bleu_score": 0.09758907807992717,
+    "rouge1_score": 0.5193798449612403
   },
   {
     "request_id": 177,
-    "bleu_score": 0.09293395547541526,
-    "rouge1_score": 0.5248868778280544
+    "bleu_score": 0.11901063671011566,
+    "rouge1_score": 0.5342163355408388
   },
   {
     "request_id": 251,
-    "bleu_score": 0.07629408394209622,
-    "rouge1_score": 0.5211267605633803
+    "bleu_score": 0.09741084799766925,
+    "rouge1_score": 0.540045766590389
   },
   {
     "request_id": 307,
-    "bleu_score": 0.11368290481574446,
-    "rouge1_score": 0.536697247706422
+    "bleu_score": 0.13232391745292713,
+    "rouge1_score": 0.5503355704697988
   },
   {
     "request_id": 779,
-    "bleu_score": 0.09251170058943035,
-    "rouge1_score": 0.5255813953488372
+    "bleu_score": 0.11579017288188292,
+    "rouge1_score": 0.5487528344671202
   },
   {
     "request_id": 860,
-    "bleu_score": 0.06308830108320182,
-    "rouge1_score": 0.49417249417249415
+    "bleu_score": 0.07263372871842542,
+    "rouge1_score": 0.49090909090909096
   },
   {
     "request_id": 517,
-    "bleu_score": 0.08141819279305831,
-    "rouge1_score": 0.4791666666666667
+    "bleu_score": 0.0952461919712046,
+    "rouge1_score": 0.4962025316455696
   },
   {
     "request_id": 114,
-    "bleu_score": 0.07219944672228502,
-    "rouge1_score": 0.46718146718146725
+    "bleu_score": 0.0832463304837489,
+    "rouge1_score": 0.4914933837429112
   },
   {
     "request_id": 159,
-    "bleu_score": 0.06721593516909109,
-    "rouge1_score": 0.4761904761904762
+    "bleu_score": 0.0805360591339052,
+    "rouge1_score": 0.49557522123893805
   },
   {
     "request_id": 802,
-    "bleu_score": 0.06618605954012198,
-    "rouge1_score": 0.5111111111111111
+    "bleu_score": 0.08798572074840659,
+    "rouge1_score": 0.5075921908893709
   },
   {
     "request_id": 49,
-    "bleu_score": 0.1073264401392076,
-    "rouge1_score": 0.5174825174825175
+    "bleu_score": 0.11504399258857513,
+    "rouge1_score": 0.5227272727272728
   },
   {
     "request_id": 964,
-    "bleu_score": 0.08069070588496266,
-    "rouge1_score": 0.5316455696202531
+    "bleu_score": 0.10068563803312233,
+    "rouge1_score": 0.5320197044334974
   },
   {
     "request_id": 823,
-    "bleu_score": 0.06992951824362563,
-    "rouge1_score": 0.5657015590200446
+    "bleu_score": 0.08806985272372311,
+    "rouge1_score": 0.5956521739130435
   },
   {
     "request_id": 915,
-    "bleu_score": 0.07092638076328965,
-    "rouge1_score": 0.5463182897862232
+    "bleu_score": 0.08592044731214782,
+    "rouge1_score": 0.5555555555555556
   },
   {
     "request_id": 208,
-    "bleu_score": 0.09825169432532407,
-    "rouge1_score": 0.5012165450121655
+    "bleu_score": 0.12064531824151206,
+    "rouge1_score": 0.5071090047393365
   },
   {
     "request_id": 453,
-    "bleu_score": 0.06257391826760879,
-    "rouge1_score": 0.49777777777777776
+    "bleu_score": 0.07520519437278224,
+    "rouge1_score": 0.5206073752711496
   },
   {
     "request_id": 765,
-    "bleu_score": 0.09785621933496132,
-    "rouge1_score": 0.5170068027210883
+    "bleu_score": 0.11715468667230362,
+    "rouge1_score": 0.5309734513274336
   },
   {
     "request_id": 872,
-    "bleu_score": 0.11759872714206011,
-    "rouge1_score": 0.5594405594405594
+    "bleu_score": 0.13875494871133998,
+    "rouge1_score": 0.559090909090909
   },
   {
     "request_id": 885,
-    "bleu_score": 0.08877272329040715,
-    "rouge1_score": 0.49874055415617125
+    "bleu_score": 0.10507426815727863,
+    "rouge1_score": 0.5294117647058825
   },
   {
     "request_id": 720,
-    "bleu_score": 0.0842755069400891,
-    "rouge1_score": 0.519650655021834
+    "bleu_score": 0.10388205218640663,
+    "rouge1_score": 0.537313432835821
   },
   {
     "request_id": 479,
-    "bleu_score": 0.0761353864601595,
-    "rouge1_score": 0.5426008968609866
+    "bleu_score": 0.09493128864124475,
+    "rouge1_score": 0.5339168490153173
   },
   {
     "request_id": 58,
-    "bleu_score": 0.09304807070001153,
-    "rouge1_score": 0.5336658354114713
+    "bleu_score": 0.11355376596253713,
+    "rouge1_score": 0.5194174757281553
   },
   {
     "request_id": 813,
-    "bleu_score": 0.09300860223332857,
-    "rouge1_score": 0.5398457583547558
+    "bleu_score": 0.1198088376877946,
+    "rouge1_score": 0.5750000000000001
   },
   {
     "request_id": 160,
-    "bleu_score": 0.09192749387611023,
-    "rouge1_score": 0.4884210526315791
+    "bleu_score": 0.1055923990508679,
+    "rouge1_score": 0.5020576131687243
   },
   {
     "request_id": 658,
-    "bleu_score": 0.11852911890470313,
-    "rouge1_score": 0.5515587529976019
+    "bleu_score": 0.13147027886410012,
+    "rouge1_score": 0.5420560747663551
   },
   {
     "request_id": 938,
-    "bleu_score": 0.08117286498671536,
-    "rouge1_score": 0.5458937198067633
+    "bleu_score": 0.09949639454654677,
+    "rouge1_score": 0.5552941176470588
   },
   {
     "request_id": 752,
-    "bleu_score": 0.08022532294354136,
-    "rouge1_score": 0.4738955823293172
+    "bleu_score": 0.0958478988958404,
+    "rouge1_score": 0.49115913555992147
   },
   {
     "request_id": 486,
-    "bleu_score": 0.08011760778916459,
-    "rouge1_score": 0.521551724137931
+    "bleu_score": 0.09392916424553842,
+    "rouge1_score": 0.5347368421052632
   },
   {
     "request_id": 53,
-    "bleu_score": 0.07006889287196898,
-    "rouge1_score": 0.5361305361305362
+    "bleu_score": 0.0938549333776281,
+    "rouge1_score": 0.55
   },
   {
     "request_id": 905,
-    "bleu_score": 0.0918198002574279,
-    "rouge1_score": 0.5655172413793104
+    "bleu_score": 0.11109956989053116,
+    "rouge1_score": 0.5739910313901346
   },
   {
     "request_id": 849,
-    "bleu_score": 0.0969019413406563,
-    "rouge1_score": 0.5419664268585133
+    "bleu_score": 0.11889932588089247,
+    "rouge1_score": 0.5467289719626168
   },
   {
     "request_id": 128,
-    "bleu_score": 0.06146366441336214,
-    "rouge1_score": 0.5459317585301836
+    "bleu_score": 0.09029146661698004,
+    "rouge1_score": 0.5561224489795918
   },
   {
     "request_id": 754,
-    "bleu_score": 0.07286005086132688,
-    "rouge1_score": 0.527027027027027
+    "bleu_score": 0.0919723284460686,
+    "rouge1_score": 0.5274725274725275
   },
   {
     "request_id": 649,
-    "bleu_score": 0.08284439661628436,
-    "rouge1_score": 0.5011185682326622
+    "bleu_score": 0.09966757701895326,
+    "rouge1_score": 0.5065502183406113
   },
   {
     "request_id": 230,
-    "bleu_score": 0.07809194697652094,
-    "rouge1_score": 0.5347826086956521
+    "bleu_score": 0.09983017335818423,
+    "rouge1_score": 0.5520169851380043
   },
   {
     "request_id": 537,
-    "bleu_score": 0.051452158842442225,
-    "rouge1_score": 0.519280205655527
+    "bleu_score": 0.08147238000858441,
+    "rouge1_score": 0.5249999999999999
   },
   {
     "request_id": 899,
-    "bleu_score": 0.08302376683131193,
-    "rouge1_score": 0.48809523809523814
+    "bleu_score": 0.09827994540918075,
+    "rouge1_score": 0.4893203883495145
   },
   {
     "request_id": 744,
-    "bleu_score": 0.1066217183132711,
-    "rouge1_score": 0.5409090909090908
+    "bleu_score": 0.1316411600217805,
+    "rouge1_score": 0.5543237250554324
   },
   {
     "request_id": 694,
-    "bleu_score": 0.09477860674891786,
-    "rouge1_score": 0.5306122448979591
+    "bleu_score": 0.11064241544514287,
+    "rouge1_score": 0.5508684863523574
   },
   {
     "request_id": 366,
-    "bleu_score": 0.08899820998020377,
-    "rouge1_score": 0.5327313769751694
+    "bleu_score": 0.10779377738293515,
+    "rouge1_score": 0.5286343612334801
   },
   {
     "request_id": 342,
-    "bleu_score": 0.10562579200801181,
-    "rouge1_score": 0.4999999999999999
+    "bleu_score": 0.1241210791452826,
+    "rouge1_score": 0.5100671140939597
   },
   {
     "request_id": 72,
-    "bleu_score": 0.06748862204611811,
-    "rouge1_score": 0.5171624713958809
+    "bleu_score": 0.09048781838056537,
+    "rouge1_score": 0.5357142857142857
   },
   {
     "request_id": 424,
-    "bleu_score": 0.09612511489039861,
-    "rouge1_score": 0.5542168674698795
+    "bleu_score": 0.11793481779339683,
+    "rouge1_score": 0.5539906103286384
   },
   {
     "request_id": 959,
-    "bleu_score": 0.09862271877979634,
-    "rouge1_score": 0.5322997416020672
+    "bleu_score": 0.11550524435323878,
+    "rouge1_score": 0.5276381909547739
   },
   {
     "request_id": 258,
-    "bleu_score": 0.08349113540660673,
-    "rouge1_score": 0.5429864253393665
+    "bleu_score": 0.10293537154335178,
+    "rouge1_score": 0.5607064017660044
   },
   {
     "request_id": 732,
-    "bleu_score": 0.08867981528767638,
-    "rouge1_score": 0.5400457665903889
+    "bleu_score": 0.10766474985324156,
+    "rouge1_score": 0.5446428571428571
   },
   {
     "request_id": 67,
-    "bleu_score": 0.0666730417674871,
-    "rouge1_score": 0.49015317286652077
+    "bleu_score": 0.08554698967398248,
+    "rouge1_score": 0.5085470085470086
   },
   {
     "request_id": 60,
-    "bleu_score": 0.058594144374190034,
-    "rouge1_score": 0.4871287128712872
+    "bleu_score": 0.07640052976246146,
+    "rouge1_score": 0.49612403100775193
   },
   {
     "request_id": 444,
-    "bleu_score": 0.11337391397006659,
-    "rouge1_score": 0.5034013605442176
+    "bleu_score": 0.12930577594149478,
+    "rouge1_score": 0.5176991150442479
   }
 ]

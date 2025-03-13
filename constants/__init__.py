@@ -50,28 +50,18 @@ USER_PROMPT = (
 )
 
 HUMAN_WRITTEN_EMAIL = (
-    "Subject: Your Rewards Points Are About to Expire!\n\n"
-    "Dear [Customer],\n\n"
-    "I hope this email finds you in good health. My name is Robert Simmons, the loyalty program manager here at "
-    "Delphi's Delights."
-    "It has come to my attention that your 3,422 rewards points are about to expire! I know how long it must've taken "
-    "to earn those rewards points,"
-    "and it would be a shame if they went to waste!\n\n"
-    "Here are some amazing drinks and sweets you can buy with your rewards points:\n"
-    "- **Cerberus' Triple Chocolate Cookie**, at 1000 points\n"
-    "- **Chiron's Honey Cakes**, at 900 points\n"
-    "- **Aphrodite's Rose Latte**, at 950 points\n\n"
-    "Here's the link to go to our website where you can redeem your rewards points:\n"
-    "[link here]\n\n"
-    "As the loyalty program manager, know that my inbox is always open for questions! Please email me with any and "
-    "all questions you have,"
-    "and I'll be sure to respond in a timely fashion.\n\n"
-    "Thank you so much for choosing Delphi's Delights!\n\n"
-    "Best Regards,\n"
-    "Robert Simmons\n"
-    "Loyalty Program Manager @ Delphi's Delights"
+    "Subject: Your Rewards Points Are About to Expire!\n\nDear [Customer],\n\nI hope this email finds you in good "
+    "health. My name is Robert Simmons, the loyalty program manager here at Delphi's Delights. It has come to my "
+    "attention that your 3,422 rewards points are about to expire! I know how long it must've taken to earn those "
+    "rewards points, and it would be a shame if they went to waste!\n\nHere are some amazing drinks and sweets you "
+    "can buy with your rewards points:\n- Cerberus' Triple Chocolate Cookie, at 1000 points\n- Chiron's Honey "
+    "Cakes, at 900 points\n- Aphrodite's Rose Latte, at 950 points\n\nHere's the link to go to our website where "
+    "you can redeem your rewards points:\n[link here]\n\nAs the loyalty program manager, know that my job is to "
+    "ensure your happiness and satisfaction at Delphi's Delights. Please email any and all questions you have to "
+    "myself or the support team at Delphi's Delights, and we'll respond in a proper fashion.\n\nThank you so much "
+    "for choosing Delphi's Delights!\n\nBest Regards,\n\nRobert Simmons  \nLoyalty Program Manager  \nDelphi's "
+    "Delights"
 )
-
 
 OPENAI_REQUEST_NUMBERS = [919, 782, 304, 123, 917, 671, 601, 522, 426, 22, 574, 274, 46, 687, 474, 455, 588, 261, 247,
                           904, 859, 679, 737, 739, 704, 924, 277, 848, 843, 715, 168, 248, 264, 272, 636, 509, 392, 323,

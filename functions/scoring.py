@@ -25,9 +25,18 @@ def get_email_scores(email_list):
 
 def write_score_results_to_file(model_type, score_list):
     os.makedirs("files", exist_ok=True)
-    file_path = os.path.join("files", f"{model_type}-score-file.json")
+    file_path = os.path.join("files", model_type, f"{model_type}-score-file.json")
 
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(score_list, f)
 
     print(f"{model_type} scoring data saved")
+
+
+def get_best_entry(file_path):
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    best_entry = max(data, key=lambda x: (x["bleu_score"], x["rouge1_score"]))
+
+    return best_entry

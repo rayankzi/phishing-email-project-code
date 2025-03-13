@@ -6,8 +6,10 @@ from constants import (
     SYSTEM_PROMPT,
     USER_PROMPT,
     CLAUDE_REQUEST_NUMBERS,
-    GEMINI_REQUEST_NUMBERS
+    GEMINI_REQUEST_NUMBERS,
+    OPENAI_REQUEST_NUMBERS
 )
+from functions.scoring import get_email_scores
 
 
 def create_gemini_req_file():
@@ -166,7 +168,7 @@ def get_filtered_gemini_request():
 
 
 def get_claude_emails_list():
-    file_path = os.path.join("files", "filtered-claude-responses-for-analysis.jsonl")
+    file_path = os.path.join("files", "claude", "filtered-claude-responses-for-analysis.jsonl")
     final_list = []
 
     with open(file_path, "r", encoding="utf-8") as f:
@@ -183,7 +185,7 @@ def get_claude_emails_list():
 
 
 def get_gemini_emails_list():
-    file_path = os.path.join("files", "filtered-gemini-responses-for-analysis.jsonl")
+    file_path = os.path.join("files", "gemini", "filtered-gemini-responses-for-analysis.jsonl")
     final_list = []
 
     with open(file_path, "r", encoding="utf-8") as f:
@@ -201,3 +203,85 @@ def get_gemini_emails_list():
             })
 
     return final_list
+
+
+def get_filtered_openai_requests():
+    matched_lines = []
+    id_set = {f"openai-request-{num}" for num in OPENAI_REQUEST_NUMBERS}
+
+    os.makedirs("files", exist_ok=True)
+    output_file = os.path.join("files", "openai", "filtered-openai-responses-for-analysis.jsonl")
+
+    with open(output_file, 'w', encoding='utf-8') as out_file:
+        for i in range(1, 11):
+            data_file = os.path.join("files", "openai", "response-files", f"openai-batch-part-{i}-responses.jsonl")
+
+            with open(data_file, 'r', encoding='utf-8') as file:
+                for line in file:
+                    try:
+                        data = json.loads(line)
+                        if 'custom_id' in data and data['custom_id'] in id_set:
+                            json.dump(data, out_file)
+                            out_file.write('\n')
+                            matched_lines.append(data)
+                    except json.JSONDecodeError:
+                        print("Skipping invalid JSON line:", line.strip())
+
+    print("Got filtered OpenAI requests")
+
+
+def get_openai_emails_list():
+    file_path = os.path.join("files", "openai", "filtered-openai-responses-for-analysis.jsonl")
+    final_list = []
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        all_lines = f.readlines()
+
+        for line in all_lines:
+            obj = json.loads(line)
+            final_list.append({
+                "request_id": obj["custom_id"],
+                "text": obj["response"]["body"]["choices"][0]["message"]["content"]
+            })
+
+    return final_list
+
+
+def create_analysis_constants_file():
+    def get_bleu_scores(score_list):
+        result = []
+        for obj in score_list:
+            result.append(obj["bleu_score"])
+
+        return result
+
+    def get_rouge_score(score_list):
+        result = []
+        for obj in score_list:
+            result.append(obj["rouge1_score"])
+
+        return result
+
+    openai_email_list = get_openai_emails_list()
+    openai_email_score_list = get_email_scores(openai_email_list)
+
+    claude_email_list = get_claude_emails_list()
+    claude_email_score_list = get_email_scores(claude_email_list)
+
+    gemini_email_list = get_gemini_emails_list()
+    gemini_email_score_list = get_email_scores(gemini_email_list)
+
+    file_path = os.path.join("statistics", "analysis_materials.py")
+
+    text = f"""
+    openai_bleu_scores = {get_bleu_scores(openai_email_score_list)}
+    claude_bleu_scores = {get_bleu_scores(claude_email_score_list)}
+    gemini_bleu_scores = {get_bleu_scores(gemini_email_score_list)}
+
+    openai_rouge_scores = {get_rouge_score(openai_email_score_list)}
+    claude_rouge_scores = {get_rouge_score(claude_email_score_list)}
+    gemini_rouge_scores = {get_rouge_score(gemini_email_score_list)}
+    """
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(text)
